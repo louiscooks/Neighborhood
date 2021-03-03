@@ -1,0 +1,45 @@
+<section>
+	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark px-2">
+		<div class="container-fluid">
+			<a class="navbar-brand">Neighborhood</a>
+			<div class="navbar-nav ml-auto">
+				<% if(!currentUser) { %>
+				<a class="nav-link" href="/login">Login</a>
+				<a class="nav-link" href="/register">Sign Up</a>
+				<% } else{ %>
+				<a class="nav-link" href="/logout">Logout</a>
+				<%} %>
+			</div>
+		</div>
+	</nav>
+</section>
+<section>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-bs-toggle="collapse"
+				data-bs-target="#navbarNavAltMarkup"
+				aria-controls="navbarNavAltMarkup"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+					<div class="me-2 border-end pe-2">
+						<a class="nav-link" href="/">Home</a>
+					</div>
+					<div class="me-2 border-end pe-2">
+						<a class="nav-link" href="/businesses">Businesses</a>
+					</div>
+					<div class="me-2">
+						<a class="nav-link" href="/businesses/new">New Business</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+</section>

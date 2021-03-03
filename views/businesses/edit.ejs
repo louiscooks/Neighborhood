@@ -1,0 +1,52 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">Edit Business</h1>
+        <div class="col-6 offset-3">
+            <form action="/businesses/<%=business._id%>?_method=PUT" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" value="<%= business.title %>" name="business[title]"
+                        id="title" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" value="<%= business.location%>" name="business[location]"
+                        id="location" required>
+                </div>
+                <label for="image" class="mb-2">Select Image</label>
+                <div class="input-group mb-3">
+                    <input class="form-control" type="file" name="image" id="image" multiple />
+                    <label class="input-group-text" for="image">Upload</label> 
+                </div>
+                <div class="mb-3">
+                    <% business.images.forEach((img,i)=>{ %> 
+                        <img src="<%= img.thumbnail %>" class="img-thumbnail" alt="">
+                        <div class="form-check-inline">
+                            <input type="checkbox" name="deleteImages[]" value="<%= img.filename %>" id="image-<%= i %>">
+                            <label for="image-<%= i %>">Delete?</label>
+                        </div>
+                        <% }) %> 
+                </div>
+                <div class="mb-3">
+                    <label for="category">Category</label>
+                    <select required class="form-select" id="category" name="business[category]"
+                        aria-label="Default select example">
+                        <% categories.forEach (category=>{%>
+                            <option value="<%=category%>" <%=business.category===category ? 'selected' : '' %>>
+                                <%= category.toUpperCase()%>
+                            </option>
+                            <% })%>
+                    </select>
+                </div>
+        
+        <div class="mb-3">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="form-control" type="text" name="business[description]" id="description"
+                required><%= business.description %></textarea>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-info">Update Business</button>
+        </div>
+        </form>
+        <a href="/businesses/<%= business._id%>">Back to Business</a>
+    </div>
