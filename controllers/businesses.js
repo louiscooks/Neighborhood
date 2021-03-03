@@ -34,7 +34,6 @@ module.exports.createbusiness = async (req, res) => {
 	}));
 	business.author = req.user._id;
 	await business.save();
-	console.log(business);
 	req.flash("success", "Successfully made a new Business");
 	res.redirect(`/businesses/${business._id}`);
 };
@@ -81,7 +80,6 @@ module.exports.updateBusiness = async (req, res) => {
 				}
 			}
 		});
-		console.log("images deleted", business);
 	}
 	req.flash("success", "Business updated!");
 	res.redirect(`/businesses/${business._id}`);
